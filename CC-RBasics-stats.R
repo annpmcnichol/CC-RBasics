@@ -33,3 +33,69 @@ Lichen <- filter(edidiv, taxonGroup == "Lichen")
 Liverwort <- filter(edidiv, taxonGroup == "Liverwort")
 Mammal <- filter(edidiv, taxonGroup == "Mammal")
 Mollusc <- filter(edidiv, taxonGroup == "Mollusc")
+
+a <- length(unique(Beetle$taxonName))
+b <- length(unique(Bird$taxonName))
+# You can choose whatever names you want for your objects, here I used a, b, c, d... for the sake of brevity.
+
+c <- length(unique(Butterfly$taxonName))
+d <- length(unique(Dragnonfly$taxonName))
+e <- length(unique(Flowering.Plants$taxonName)) 
+f <- length(unique(Fungus$taxonName))
+
+g <- length(unique(Hymenopteran$taxonName))
+h <- length(unique(Lichen$taxonName))
+i <- length(unique(Liverwort$taxonName))
+j <- length(unique(Mammal$taxonName))
+k <- length(unique(Mollusc$taxonName))
+
+biodiv <- c(a,b,c,d,e,f,g,h,i,j,k)
+
+names(biodiv) <- c("Beetle","Bird","Butterfly", "Dragonfly","Flowering.Plants", "Fungus","Hymenopteran",
+                   "Lichen", "Liverwort", "Mammal", "Mollusc")
+
+barplot(biodiv)
+
+help(barplot)     # For help with the barplot() function
+help(par)         # For help with plotting in general
+
+barplot(biodiv, xlab="Taxa", ylab = "number of species", ylim = c(0,600), las = 2)
+
+barplot(biodiv, xlab="Taxa", ylab = "number of species", ylim = c(0,600), las = 1, cex.names = 0.25, 
+                cex.axis = 1.0, cex.lab = 1.5)
+
+
+#First graphing challenge from Session 1. 
+
+wing <- read.csv("/Users/ann/github/CC-RBasics/data/wingspan.csv")
+
+#sort by species
+
+wing_sort <- wing[order(wing$Av_species),]
+
+Eagle <- filter(wing_sort, Av_species == "eagle") 
+Hummingbird <- filter(wing_sort, Av_species == "hummingbird")
+Kingfisher <- filter(wing_sort, Av_species == "kingfisher") 
+Sparrow <- filter(wing_sort, Av_species == "sparrow")
+
+xeagle <- mean(Eagle$Wingspan)
+xhumming <- mean(Hummingbird$Wingspan)
+xking <- mean(Kingfisher$Wingspan)
+xsparrow <- mean(Sparrow$Wingspan)
+
+avgspan <- c(xeagle, xhumming, xking, xsparrow)
+
+names(avgspan) <- c("Eagle", "Hummer", "King", "Sparrow")
+
+barplot(avgspan)
+
+barplot(avgspan, xlab="Bird", ylab = "Average Wing Span", ylim = c(0,200), las = 2)
+
+
+
+
+
+
+
+
+
